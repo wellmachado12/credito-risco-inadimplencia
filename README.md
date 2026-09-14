@@ -28,3 +28,21 @@ A análise de dados atua transformando registros históricos dispersos em inteli
 * **Identificação de Padrões Ocultos:** Por meio de algoritmos e técnicas estatísticas, é possível mapear quais comportamentos (ex.: queda na frequência de uso, alteração no meio de pagamento, chamados de suporte frequentes ou contratos de curto prazo) possuem alta correlação com o cancelamento ou a inadimplência.
 * **Segmentação e Scoring de Risco:** A construção de modelos preditivos permite atribuir uma pontuação contínua de risco (*Credit / Churn Score*) para cada cliente em tempo real.
 * **Ações Preventivas e Automatizadas:** Em vez de reagir após o cancelamento ou o atraso, a equipe de negócios passa a atuar de forma proativa, oferecendo incentivos de retenção, renegociações personalizadas e planos adequados ao perfil de cada segmento.
+
+---
+
+## 2. Levantamento das Fontes de Dados e Métodos de Coleta
+
+Para garantir a viabilidade, reprodutibilidade e conformidade com as regras de privacidade e dados não confidenciais, este projeto utiliza fontes públicas de mercado consolidadas para análise de risco de crédito e comportamento de churn.
+
+### Descrição das Fontes de Dados
+* **Base de Concessão de Crédito e Inadimplência (Kaggle / Public Repositories):** Conjunto de dados histórico contendo registros transacionais, demográficos e operacionais de clientes.
+* **Dados Demográficos e Operacionais:** Mapeamento do perfil dos clientes, incluindo tempo de relacionamento (*tenure*), tipo de contrato, métodos de pagamento e adesão a serviços adicionais.
+* **Dados Financeiros:** Registros de receita mensal (*Monthly Charges*), total acumulado (*Total Charges*) e histórico de pagamentos/atrasos.
+
+### Tipos de Dados Disponíveis
+* **Estruturados:** Tabelas relacionais nos formatos `.csv` e `.parquet`, compostas por variáveis categóricas (ex.: tipo de contrato, status de churn, método de pagamento) e variáveis numéricas contínuas/discretas (ex.: valor cobrado, pontuação de score, meses de contrato).
+
+### Métodos de Acesso e Coleta
+* **Coleta via API / Download Direto:** Ingestão dos arquivos brutos diretamente de repositórios públicos via scripts em **Python**.
+* **Pipeline de Ingestão:** Utilização das bibliotecas `Pandas` para estruturação inicial em memória e `PySpark` para leitura e processamento distribuído de volumes maiores de dados.
