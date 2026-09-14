@@ -46,3 +46,10 @@ Para garantir a viabilidade, reprodutibilidade e conformidade com as regras de p
 ### Métodos de Acesso e Coleta
 * **Coleta via API / Download Direto:** Ingestão dos arquivos brutos diretamente de repositórios públicos via scripts em **Python**.
 * **Pipeline de Ingestão:** Utilização das bibliotecas `Pandas` para estruturação inicial em memória e `PySpark` para leitura e processamento distribuído de volumes maiores de dados.
+
+### Aplicação Prática: Como a Análise de Dados Soluciona o Problema
+A integração e o tratamento adequado dessas fontes de dados permitem mitigar a inadimplência e o churn por meio de três pilares:
+
+* **Centralização e Sanitização dos Dados:** Unificação de dados operacionais e financeiros em uma base limpa, eliminando inconsistências e preparando os dados para análises preditivas.
+* **Mapeamento de Indicadores de Risco (KPRs):** Identificação de variáveis críticas (como contratos mês a mês ou falta de suporte técnico) que servem como alertas precoces de cancelamento ou não pagamento.
+* **Subídio para Decisões Automáticas:** Transformação de dados brutos em métricas claras que alimentam dashboards executivos e modelos de Machine Learning, permitindo que a equipe de negócios intervenha antes que o cliente cancele ou fique inadimplente.
