@@ -53,3 +53,47 @@ A integração e o tratamento adequado dessas fontes de dados permitem mitigar a
 * **Centralização e Sanitização dos Dados:** Unificação de dados operacionais e financeiros em uma base limpa, eliminando inconsistências e preparando os dados para análises preditivas.
 * **Mapeamento de Indicadores de Risco (KPRs):** Identificação de variáveis críticas (como contratos mês a mês ou falta de suporte técnico) que servem como alertas precoces de cancelamento ou não pagamento.
 * **Subídio para Decisões Automáticas:** Transformação de dados brutos em métricas claras que alimentam dashboards executivos e modelos de Machine Learning, permitindo que a equipe de negócios intervenha antes que o cliente cancele ou fique inadimplente.
+
+---
+
+## 3. Análise Exploratória de Dados (EDA) e Modelagem
+
+A análise exploratória foi desenvolvida em **Python/PySpark** no ambiente Google Colab (notebook disponível no diretório [`notebooks/eda_pyspark_pandas.ipynb`](./notebooks/eda_pyspark_pandas.ipynb)).
+
+### Principais Achados da EDA
+* **Taxa Média de Inadimplência/Churn:** A base analisada registrou uma proporção aproximada de **25% de registros em default/churn**.
+* **Concentração por Tipo de Contrato:** Clientes com contratos na modalidade **Mensal** apresentam maior taxa de cancelamento e inadimplência em relação aos contratos de longo prazo (Anual e Bi-anual).
+* **Modelagem Preditiva:** Aplicação do algoritmo **Random Forest Classifier** (`Scikit-Learn`) para geração da variável `Score_Risco` (escala de 0 a 1000) por cliente.
+
+---
+
+## 4. Relatório de Insights e Recomendações Estratégicas
+
+### Insights de Negócio
+* **Sensibilidade do Contrato Mês a Mês:** A ausência de fidelidade em contratos mensais facilita a saída imediata do cliente em momentos de insatisfação ou atrito financeiro.
+* **Segmentação por Score:** O `Score_Risco` permitiu mapear preventivamente a probabilidade de default antes da ocorrência do atraso de pagamento.
+
+### Plano de Ação Recomendado
+1. **Campanhas de Migração:** Incentivar a transição de clientes mensais para planos anuais oferecendo descontos ou vantagens exclusivas.
+2. **Réguas de Retenção Automatizadas:** Acionar a equipe de atendimento sempre que o `Score_Risco` de um cliente atingir níveis críticos.
+3. **Incentivo ao Débito Automático:** Reduzir a inadimplência por esquecimento convertendo pagamentos de boleto para débito automático ou cartão de crédito.
+
+---
+
+## 5. Visualização de Dados e Dashboard Executivo
+
+### Painel Interativo no Looker Studio
+Para suporte à tomada de decisão das equipes executivas e operacionais, foi construído um dashboard no **Looker Studio** conectado à base processada (`base_tratada_credit_churn.csv`).
+
+* **KPIs Principais:** Total de Clientes, Taxa Global de Inadimplência/Churn (%) e Média de Renda.
+* **Análises Segmentadas:** Distribuição de churn por Tipo de Contrato, Método de Pagamento e Faixa de Relacionamento (*Tenure*).
+* **Distribuição de Risco:** Visão do volume de clientes por pontuação do `Score_Risco`.
+
+> 📌 **Link para o Dashboard Interativo:** `https://datastudio.google.com/reporting/1eff4be8-65ff-49fd-9ed4-804e1a4f624f`
+
+---
+
+## Conclusões Gerais
+
+1. **Abordagem End-to-End:** O projeto cobriu todas as etapas do pipeline de dados: da ingestão e tratamento em PySpark até o treinamento de modelo preditivo e publicação em dashboard.
+2. **Geração de Valor:** A identificação precoce do risco de churn/default permite reduzir custos de aquisição (CAC) e proteger a receita recorrente da empresa.
